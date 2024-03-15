@@ -29,4 +29,9 @@ public class Product {
     List<ProductEntity> findByParam(@PathVariable String name, @PathVariable String param) {
         return this.productService.findByParam(param, name);
     }
+
+    @DeleteMapping("/product/{id}")
+    void deleteById(@PathVariable String id) {
+        this.productService.deleteById(id);
+    }
 }

@@ -33,4 +33,9 @@ public class ProductService implements DbProduct {
         query.addCriteria(Criteria.where(param).is(name));
         return mongoTemplate.find(query, ProductEntity.class);
     }
+
+    @Override
+    public void deleteById(String id) {
+        this.productRepository.deleteById(id);
+    }
 }
