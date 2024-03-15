@@ -12,8 +12,6 @@ public interface ProductRepository extends MongoRepository<ProductEntity, String
     @Query("{name:'?0'}")
     ProductEntity findItemByName(String name);
 
-    @Query(fields="{'name' : 1}")
+    @Query()
     List<ProductEntity> findAllBy(String category);
-
-    public long count();
 }

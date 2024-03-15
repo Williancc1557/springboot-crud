@@ -6,6 +6,8 @@ import com.products.productsmanager.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ProductService implements DbProduct {
     @Autowired
@@ -13,5 +15,10 @@ public class ProductService implements DbProduct {
     @Override
     public void save(ProductEntity product) {
         this.productRepository.save(product);
+    }
+
+    @Override
+    public List<ProductEntity> findAll() {
+        return this.productRepository.findAll();
     }
 }
