@@ -14,12 +14,6 @@ public class Product {
 
     @Autowired
     private DbProduct productService;
-
-//    @RequestMapping("/test")
-//    ProductEntity get() {
-//        return new ProductEntity("12", "will", "hello", 1234);
-//    }
-
     @PostMapping("/product")
     void save(@Valid @RequestBody PostProductDto body) {
         ProductEntity product = new ProductEntity(body.name, body.description, body.price);
@@ -31,8 +25,8 @@ public class Product {
         return this.productService.findAll();
     }
 
-    @RequestMapping("/product/name/{name}")
-    List<ProductEntity> findByName(@PathVariable String name) {
-        return this.productService.findByName(name);
+    @RequestMapping("/product/{param}/{name}")
+    List<ProductEntity> findByParam(@PathVariable String name, @PathVariable String param) {
+        return this.productService.findByParam(param, name);
     }
 }
