@@ -1,4 +1,4 @@
-package com.products.productsmanager.Model;
+package com.products.productsmanager.Model.mongodb;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
