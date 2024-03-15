@@ -1,11 +1,11 @@
 package com.products.productsmanager.Model.mongodb;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document("product")
 public class ProductEntity {
-    @Id
+    @MongoId
     public String id; // UUID
 
     public String name;
