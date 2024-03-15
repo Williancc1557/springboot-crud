@@ -9,4 +9,6 @@ public class PatchProductDto {
     @Size(min = 30, max = 150, message = "[30 - 150] description character limit")
     public String description;
     public int price;
+    public int stock;
+
 }

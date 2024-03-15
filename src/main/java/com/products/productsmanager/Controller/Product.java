@@ -17,7 +17,7 @@ public class Product {
     private DbProduct productService;
     @PostMapping("/product")
     void save(@Valid @RequestBody PostProductDto body) {
-        ProductEntity product = new ProductEntity(body.name, body.description, body.price);
+        ProductEntity product = new ProductEntity(body.name, body.description, body.price, body.stock);
         this.productService.save(product);
     }
 
@@ -39,7 +39,7 @@ public class Product {
     @PatchMapping("/product/{id}")
     void updateById(@PathVariable String id, @RequestBody PatchProductDto body) {
 
-        ProductEntity product = new ProductEntity(body.name, body.description, body.price);
+        ProductEntity product = new ProductEntity(body.name, body.description, body.price, body.stock);
         this.productService.updateById(id, product);
     }
 }
