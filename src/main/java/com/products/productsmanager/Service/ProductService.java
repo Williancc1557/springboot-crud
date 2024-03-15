@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductService implements DbProduct {
@@ -37,5 +38,29 @@ public class ProductService implements DbProduct {
     @Override
     public void deleteById(String id) {
         this.productRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateById(String id, ProductEntity product) {
+        Optional<ProductEntity> existingProductOptional = this.productRepository.findById(id);
+        ProductEntity existingProduct = existingProductOptional.get();
+
+        if (!product.description.isBlank()) {
+            existingProduct.description = product.description;
+        }
+
+        if (!product.name.isBlank()) {
+            existingProduct.name = product.name;
+        }
+
+        if (product.price > 0) {
+            existingProduct.price = product.price;
+        }
+
+        if (product.stock != existingProduct.stock) {
+             existingProduct.stock = product.stock;
+        }
+
+        this.productRepository.save(existingProduct);
     }
 }

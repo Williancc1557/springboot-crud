@@ -1,5 +1,6 @@
 package com.products.productsmanager.Controller;
 
+import com.products.productsmanager.Controller.Dtos.PatchProductDto;
 import com.products.productsmanager.Controller.Dtos.PostProductDto;
 import com.products.productsmanager.Model.UseCase.DbProduct;
 import com.products.productsmanager.Model.mongodb.ProductEntity;
@@ -33,5 +34,12 @@ public class Product {
     @DeleteMapping("/product/{id}")
     void deleteById(@PathVariable String id) {
         this.productService.deleteById(id);
+    }
+
+    @PatchMapping("/product/{id}")
+    void updateById(@PathVariable String id, @RequestBody PatchProductDto body) {
+
+        ProductEntity product = new ProductEntity(body.name, body.description, body.price);
+        this.productService.updateById(id, product);
     }
 }

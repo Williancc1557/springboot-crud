@@ -13,10 +13,12 @@ public class ProductEntity {
     public String name;
     public String description;
     public int price;
+    public int stock;
 
-    public ProductEntity(String name, String description, int price) {
+    public ProductEntity(String name, String description, int price, int stock) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.stock = stock;
     }
 }

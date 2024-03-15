@@ -10,4 +10,7 @@ public interface DbProduct {
     List<ProductEntity> findAll();
     List<ProductEntity> findByParam(String param, String name);
     void deleteById(String id);
+
+    void updateById(String id, ProductEntity product);
+
 }
