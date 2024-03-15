@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  rest:
+    container_name: api-user
+    build:
+      dockerfile: Dockerfile
+      context: "."
+    image: spring-boot-playground:latest
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        
+      }'
+    depends_on:
+      - mongodb
+    networks:
+      - api-user-network
+
+  mongodb:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=database
+      - MONGODB_DATA_DIR=/data/db
+      - MONDODB_LOG_DIR=/dev/null
+    volumes:
+      - mongo:/data/db
+    networks:
+      - api-user-network
+
+volumes:
+  mongo:
+networks:
+  api-user-network:
