@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public interface ProductRepository extends MongoRepository<ProductEntity, String> {
     @Query("{name:'?0'}")
-    ProductEntity findItemByName(String name);
+    List<ProductEntity> findItemByName(String name);
 
     @Query()
     List<ProductEntity> findAllBy(String category);

@@ -21,4 +21,9 @@ public class ProductService implements DbProduct {
     public List<ProductEntity> findAll() {
         return this.productRepository.findAll();
     }
+
+    @Override
+    public List<ProductEntity> findByName(String name) {
+        return this.productRepository.findItemByName(name);
+    }
 }

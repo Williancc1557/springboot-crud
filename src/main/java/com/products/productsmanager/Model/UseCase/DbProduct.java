@@ -7,4 +7,6 @@ import java.util.List;
 public interface DbProduct {
     void save(ProductEntity product);
     List<ProductEntity> findAll();
+
+    List<ProductEntity> findByName(String name);
 }
