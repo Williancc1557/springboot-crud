@@ -2,14 +2,17 @@ package com.products.productsmanager.Controller;
 
 import com.products.productsmanager.Model.UseCase.DbProduct;
 import com.products.productsmanager.Model.mongodb.ProductEntity;
+import com.products.productsmanager.Service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Product {
-    private DbProduct dbProduct;
+
+    @Autowired
+    private ProductService productService;
 
 //    @RequestMapping("/test")
 //    ProductEntity get() {
@@ -17,6 +20,6 @@ public class Product {
 //    }
     @PostMapping("/")
     void save(@RequestBody ProductEntity body) {
-        this.dbProduct.save(body);
+        this.productService.save(body);
     }
 }
