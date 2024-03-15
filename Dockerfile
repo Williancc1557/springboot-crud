@@ -34,8 +34,6 @@ COPY . .
 
 RUN mvn compile
 
-COPY . .
-
 # Package stage
 EXPOSE 8080
 CMD mvn spring-boot:run
